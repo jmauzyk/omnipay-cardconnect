@@ -1,0 +1,39 @@
+{
+    "name": "jmauzyk/omnipay-cardconnect",
+    "type": "library",
+    "description": "CardConnect driver for the Omnipay payment processing library",
+    "keywords": [
+        "cardconnect",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "support": {
+        "docs": "https://github.com/jmauzyk/omnipay-cardconnect/blob/master/README.md",
+        "issues": "https://github.com/jmauzyk/omnipay-cardconnect/issues"
+    },
+    "homepage": "https://github.com/jmauzyk/omnipay-cardconnect",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jmauzyk",
+            "homepage": "https://github.com/jmauzyk"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Cardconnect\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~3.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~3.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
