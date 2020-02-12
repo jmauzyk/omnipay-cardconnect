@@ -6,7 +6,7 @@ namespace Omnipay\Cardconnect\Message;
 
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    protected $testEndpoint = 'https://fts.cardconnect.com:6443/cardconnect/rest';
+    protected $testEndpoint = 'https://fts-uat.cardconnect.com/cardconnect/rest';
 
     // Getters
     // =========================================================================
@@ -19,11 +19,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function getApiHost()
     {
         return $this->getParameter('apiHost');
-    }
-
-    public function getApiPort()
-    {
-        return $this->getParameter('apiPort');
     }
 
     public function getApiUsername()
@@ -53,13 +48,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('apiUsername', $value);
     }
+    
     public function setApiHost($value)
     {
         return $this->setParameter('apiHost', $value);
-    }
-    public function setApiPort($value)
-    {
-        return $this->setParameter('apiPort', $value);
     }
 
     public function setApiPassword($value)
@@ -74,7 +66,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     protected function liveEndpoint()
     {
-        return 'https://'.$this->getApiHost().':'.$this->getApiPort().'/cardconnect/rest';
+        return 'https://'.$this->getApiHost().'/cardconnect/rest';
     }
 
     // Public Functions

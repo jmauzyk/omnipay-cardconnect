@@ -24,11 +24,6 @@ class Gateway extends AbstractGateway
         return $this->getParameter('apiHost');
     }
 
-    public function getApiPort()
-    {
-        return $this->getParameter('apiPort');
-    }
-
     public function getApiUsername()
     {
         return $this->getParameter('apiUsername');
@@ -56,13 +51,10 @@ class Gateway extends AbstractGateway
     {
         return $this->setParameter('apiUsername', $value);
     }
+
     public function setApiHost($value)
     {
         return $this->setParameter('apiHost', $value);
-    }
-    public function setApiPort($value)
-    {
-        return $this->setParameter('apiPort', $value);
     }
 
     public function setApiPassword($value)
@@ -83,7 +75,6 @@ class Gateway extends AbstractGateway
         $params = [
             'merchantId' => '',
             'apiHost' => '',
-            'apiPort' => '',
             'apiUsername' => '',
             'apiPassword' => '',
             'testMode' => false
