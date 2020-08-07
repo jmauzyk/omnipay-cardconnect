@@ -16,7 +16,7 @@ class AuthorizeRequest extends AbstractRequest
             'cvv2' => $card->getCvv(),
             'amount' => $this->getAmountInteger(),
             'currency' => $this->getCurrency(),
-            'orderid' => $this->getTransactionId(),
+            'orderid' => $this->getOrderId(),
             'name' => $card->getName(),
             'address' => $card->getBillingAddress1(),
             'address2' => $card->getBillingAddress2(),

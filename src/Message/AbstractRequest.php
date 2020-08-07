@@ -36,6 +36,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('testMode');
     }
 
+    public function getOrderId()
+    {
+        return $this->getParameter('orderId');
+    }
+
     // Setters
     // =========================================================================
 
@@ -48,7 +53,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('apiUsername', $value);
     }
-    
+
     public function setApiHost($value)
     {
         return $this->setParameter('apiHost', $value);
@@ -62,6 +67,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setTestMode($value)
     {
         return $this->setParameter('testMode', $value);
+    }
+
+    public function setOrderId($value)
+    {
+        return $this->setParameter('orderId', $value);
     }
 
     protected function liveEndpoint()
