@@ -11,7 +11,7 @@ class Gateway extends AbstractGateway
 
     public function getName()
     {
-        return 'Cardconnect';
+        return 'CardConnect';
     }
 
     public function getMerchantId()
@@ -135,5 +135,49 @@ class Gateway extends AbstractGateway
     public function refund(array $parameters = [])
     {
         return $this->createRequest('\Omnipay\Cardconnect\Message\RefundRequest', $parameters);
+    }
+
+    /**
+     * Create a create card request.
+     *
+     * @param array $parameters
+     * @return \Omnipay\Cardconnect\Message\CreateCardRequest
+     */
+    public function createCard(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\Cardconnect\Message\CreateCardRequest', $parameters);
+    }
+
+    /**
+     * Create a update card request.
+     *
+     * @param array $parameters
+     * @return \Omnipay\Cardconnect\Message\UpdateCardRequest
+     */
+    public function updateCard(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\Cardconnect\Message\UpdateCardRequest', $parameters);
+    }
+
+    /**
+     * Create a update card request.
+     *
+     * @param array $parameters
+     * @return \Omnipay\Cardconnect\Message\GetCardRequest
+     */
+    public function getCard(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\Cardconnect\Message\GetCardRequest', $parameters);
+    }
+
+    /**
+     * Create a delete card request.
+     *
+     * @param array $parameters
+     * @return \Omnipay\Cardconnect\Message\DeleteCardRequest
+     */
+    public function deleteCard(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\Cardconnect\Message\DeleteCardRequest', $parameters);
     }
 }

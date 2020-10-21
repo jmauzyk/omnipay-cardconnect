@@ -41,6 +41,36 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('orderId');
     }
 
+    public function getProfile()
+    {
+        return $this->getParameter('profile');
+    }
+
+    public function getDefaultacct()
+    {
+        return $this->getParameter('defaultacct');
+    }
+
+    public function getProfileupdate()
+    {
+        return $this->getParameter('profileupdate');
+    }
+
+    public function getAuoptout()
+    {
+        return $this->getParameter('auoptout');
+    }
+
+    public function getAccttype()
+    {
+        return $this->getParameter('accttype');
+    }
+
+    public function getAcct()
+    {
+        return $this->getParameter('acct');
+    }
+
     // Setters
     // =========================================================================
 
@@ -72,6 +102,36 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setOrderId($value)
     {
         return $this->setParameter('orderId', $value);
+    }
+
+    public function setProfile($value)
+    {
+        return $this->setParameter('profile', $value);
+    }
+
+    public function setDefaultacct($value)
+    {
+        return $this->setParameter('defaultacct', $value);
+    }
+
+    public function setProfileupdate($value)
+    {
+        return $this->setParameter('profileupdate', $value);
+    }
+
+    public function setAuoptout($value)
+    {
+        return $this->setParameter('auoptout', $value);
+    }
+
+    public function setAccttype($value)
+    {
+        return $this->setParameter('accttype', $value);
+    }
+
+    public function setAcct($value)
+    {
+        return $this->setParameter('acct', $value);
     }
 
     protected function liveEndpoint()

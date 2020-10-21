@@ -2,42 +2,43 @@
 
 namespace Omnipay\Cardconnect\Message;
 
-class PurchaseRequest extends AbstractRequest
+class CreateCardRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('amount', 'card');
+        $this->validate('card');
         $this->getCard()->validate();
         $card = $this->getCard();
         $data = [
+            'profile' => $this->getProfile(),
+            'defaultacct' => $this->getDefaultacct(),
+            'profileupdate' => $this->getProfileupdate(),
+            'auoptout' => $this->getAuoptout(),
+            'accttype' => $this->getAccttype(),
             'merchid' => $this->getMerchantId(),
             'account' => $card->getNumber(),
             'expiry' => $card->getExpiryDate('my'),
-            'cvv2' => $card->getCvv(),
-            'amount' => $this->getAmountInteger(),
-            'currency' => $this->getCurrency(),
-            'orderid' => $this->getOrderId(),
             'name' => $card->getName(),
+            'company' => $card->getCompany(),
             'address' => $card->getBillingAddress1(),
-            'address2' => $card->getBillingAddress2(),
             'city' => $card->getBillingCity(),
             'region' => $card->getBillingState(),
             'postal' => $card->getBillingPostcode(),
             'country' => $card->getBillingCountry(),
             'phone' => $card->getBillingPhone(),
-            'email' => $card->getEmail(),
-            'profile' => $this->getProfile(),
-            'bin' => 'Y',
-            'tokenize' => 'Y',
-            'ecomind' => 'E',
-            'capture' => 'Y'
+            'email' => $card->getEmail()
         ];
-
         return $data;
     }
 
     public function getEndpoint()
     {
-        return $this->getEndpointBase() . '/auth';
+        return $this->getEndpointBase() . '/profile/';
+    }
+
+    protected function createResponse($data)
+    {
+        $jsonData = json_decode($data->getBody()->getContents(), true);
+        return $this->response = new CreateUpdateCardResponse($this, $jsonData);
     }
 }

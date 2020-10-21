@@ -6,8 +6,12 @@ class AuthorizeRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('amount', 'card');
-        $this->getCard()->validate();
+        if ($this->getProfile()) {
+            $this->validate('amount');
+        } else {
+            $this->validate('amount', 'card');
+            $this->getCard()->validate();
+        }
         $card = $this->getCard();
         $data = [
             'merchid' => $this->getMerchantId(),
@@ -22,10 +26,11 @@ class AuthorizeRequest extends AbstractRequest
             'address2' => $card->getBillingAddress2(),
             'city' => $card->getBillingCity(),
             'region' => $card->getBillingState(),
-            'country' => $card->getBillingCountry(),
             'postal' => $card->getBillingPostcode(),
-            'email' => $card->getEmail(),
+            'country' => $card->getBillingCountry(),
             'phone' => $card->getBillingPhone(),
+            'email' => $card->getEmail(),
+            'profile' => $this->getProfile(),
             'bin' => 'Y',
             'tokenize' => 'Y',
             'ecomind' => 'E'
