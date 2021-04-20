@@ -28,7 +28,7 @@ class DeleteCardRequest extends AbstractRequest
 
     public function getEndpoint($data)
     {
-        $path = $data['profile'] . '/' . $data['acct'] . '/' . $data ['merchid'];
+        $path = $data['profile'] . '/' . $data['acct'] . '/' . $data['merchid'];
         return $this->getEndpointBase() . '/profile/' . $path;
     }
 

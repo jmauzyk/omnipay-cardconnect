@@ -31,6 +31,7 @@ class AuthorizeRequest extends AbstractRequest
             'phone' => $card->getBillingPhone(),
             'email' => $card->getEmail(),
             'profile' => $this->getProfile(),
+            'userfields' => $this->getUserfields(),
             'bin' => 'Y',
             'tokenize' => 'Y',
             'ecomind' => 'E'

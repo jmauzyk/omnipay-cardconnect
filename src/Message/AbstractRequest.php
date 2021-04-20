@@ -71,6 +71,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('acct');
     }
 
+    public function getUserfields()
+    {
+        return $this->getParameter('userfields');
+    }
+
     // Setters
     // =========================================================================
 
@@ -132,6 +137,11 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setAcct($value)
     {
         return $this->setParameter('acct', $value);
+    }
+
+    public function setUserfields($value)
+    {
+        return $this->setParameter('userfields', $value);
     }
 
     protected function liveEndpoint()

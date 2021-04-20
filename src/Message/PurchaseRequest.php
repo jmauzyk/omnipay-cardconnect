@@ -6,8 +6,12 @@ class PurchaseRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('amount', 'card');
-        $this->getCard()->validate();
+        if ($this->getProfile()) {
+            $this->validate('amount');
+        } else {
+            $this->validate('amount', 'card');
+            $this->getCard()->validate();
+        }
         $card = $this->getCard();
         $data = [
             'merchid' => $this->getMerchantId(),
@@ -27,6 +31,7 @@ class PurchaseRequest extends AbstractRequest
             'phone' => $card->getBillingPhone(),
             'email' => $card->getEmail(),
             'profile' => $this->getProfile(),
+            'userfields' => $this->getUserfields(),
             'bin' => 'Y',
             'tokenize' => 'Y',
             'ecomind' => 'E',

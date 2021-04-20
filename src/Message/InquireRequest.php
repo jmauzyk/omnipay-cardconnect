@@ -2,15 +2,14 @@
 
 namespace Omnipay\Cardconnect\Message;
 
-class GetCardRequest extends AbstractRequest
+class InquireRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('profile');
+        $this->validate('transactionReference');
         $data = [
-            'profile' => $this->getProfile(),
-            'acct' => $this->getAcct(),
-            'merchid' => $this->getMerchantId()
+            'merchid' => $this->getMerchantId(),
+            'retref' => $this->getTransactionReference()
         ];
         return $data;
     }
@@ -25,13 +24,13 @@ class GetCardRequest extends AbstractRequest
 
     public function getEndpoint($data)
     {
-        $path = $data['profile'] . '/' . $data['acct'] . '/' . $data['merchid'];
-        return $this->getEndpointBase() . '/profile/' . $path;
+        $path = $data['retref'] . '/' . $data['merchid'];
+        return $this->getEndpointBase() . '/inquire/' . $path;
     }
 
     protected function createResponse($data)
     {
         $jsonData = json_decode($data->getBody()->getContents(), true);
-        return $this->response = new GetCardResponse($this, $jsonData);
+        return $this->response = new InquireResponse($this, $jsonData);
     }
 }

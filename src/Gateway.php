@@ -138,6 +138,17 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Create an inquire request.
+     *
+     * @param array $parameters
+     * @return \Omnipay\Cardconnect\Message\InquireRequest
+     */
+    public function inquire(array $parameters = [])
+    {
+        return $this->createRequest('\Omnipay\Cardconnect\Message\InquireRequest', $parameters);
+    }
+
+    /**
      * Create a create card request.
      *
      * @param array $parameters
